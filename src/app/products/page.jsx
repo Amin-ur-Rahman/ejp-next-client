@@ -9,7 +9,7 @@ const ProductsPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
 
   useEffect(() => {
-    fetch("http://localhost:4000/all-products")
+    fetch("https://ejp-next0server-1.onrender.com/all-products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
