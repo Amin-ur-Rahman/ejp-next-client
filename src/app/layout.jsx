@@ -1,6 +1,9 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import NextAuthProvider from "./NextAuthProvider";
+import { Providers } from "./providers";
+import Navbar from "./components/navigation/Navbar";
+import Footer from "./components/footer/Footer";
 // import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const geistSans = Geist({
@@ -25,7 +28,13 @@ export default async function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <NextAuthProvider>{children}</NextAuthProvider>
+        <Providers>
+          <NextAuthProvider>
+            <Navbar></Navbar>
+            {children}
+            <Footer></Footer>
+          </NextAuthProvider>
+        </Providers>
       </body>
     </html>
   );

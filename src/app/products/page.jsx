@@ -9,12 +9,14 @@ const ProductsPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
 
   useEffect(() => {
-    fetch("https://ejp-next0server-1.onrender.com/all-products")
+    fetch("http://localhost:4000/all-products")
       .then((res) => res.json())
-      .then((data) => setProducts(data));
+      .then((data) => setProducts(data))
+      .catch((error) => {
+        console.error("Error fetching products:", error);
+        setProducts([]);
+      });
   }, []);
-
-  console.log(products);
 
   // Categories for the filter (UI only)
   const categories = [
@@ -85,7 +87,7 @@ const ProductsPage = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {products === null ? (
           // Loading State
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-6">
             {[...Array(6)].map((_, index) => (
               <div
                 key={index}
@@ -117,7 +119,7 @@ const ProductsPage = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {products.map((product) => (
               <div
-                key={product._id}
+                key={product.id}
                 className="group bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300"
               >
                 {/* Product Image */}
