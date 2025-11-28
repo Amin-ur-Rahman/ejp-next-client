@@ -118,7 +118,7 @@ export default function Navbar() {
 
                     {/* Management Links */}
                     <Link
-                      href="/add-product"
+                      href="/api/add-products"
                       className="flex items-center px-4 py-2 text-[#111111] hover:bg-[#F3F3F3] transition-colors duration-200"
                       onClick={() => setIsDropdownOpen(false)}
                     >
@@ -213,8 +213,8 @@ export default function Navbar() {
                 </div>
 
                 <Link
-                  href="/add-product"
-                  className="flex items-center text-[#111111] hover:text-[#8AC926] transition-colors duration-200"
+                  href="/api/add-products"
+                  className="flex items-center text-[#111111]  hover:text-[#8AC926] transition-colors duration-200"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   <Package className="w-4 h-4 mr-3 text-[#8AC926]" />

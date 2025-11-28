@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { Search, ShoppingCart, Eye } from "lucide-react";
+import Image from "next/image";
 
 const ProductsPage = () => {
   const [products, setProducts] = useState(null);
@@ -119,13 +120,15 @@ const ProductsPage = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {products.map((product) => (
               <div
-                key={product.id}
+                key={product._id}
                 className="group bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300"
               >
                 {/* Product Image */}
                 <div className="relative h-64 overflow-hidden bg-[#F3F3F3]">
                   {product.image_url ? (
-                    <img
+                    <Image
+                      height={500}
+                      width={400}
                       src={product.image_url}
                       alt={product.name}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
