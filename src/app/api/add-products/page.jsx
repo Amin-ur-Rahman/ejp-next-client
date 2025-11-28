@@ -34,11 +34,14 @@ export default function AddProductPage() {
 
   const addProductMutation = useMutation({
     mutationFn: async (productData) => {
-      const response = await axios.post("http://localhost:4000/add-product", {
-        ...productData,
-        price: parseFloat(productData.price),
-        stock_quantity: parseInt(productData.stock_quantity),
-      });
+      const response = await axios.post(
+        "https://ejp-next0server-1.onrender.com/add-product",
+        {
+          ...productData,
+          price: parseFloat(productData.price),
+          stock_quantity: parseInt(productData.stock_quantity),
+        }
+      );
       return response.data;
     },
     onSuccess: (data) => {
@@ -55,11 +58,7 @@ export default function AddProductPage() {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text:
-          error.response?.data?.message ||
-          "Failed to add product. Please try again.",
-        confirmButtonColor: "#84cc16",
-        confirmButtonText: "Try Again",
+        text: "something went wrong, please try again",
       });
     },
   });
@@ -96,7 +95,7 @@ export default function AddProductPage() {
                   {...register("product_id", {
                     required: "Product ID is required",
                   })}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-lime-500 focus:outline-none transition"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-lime-500 focus:outline-none transition text-black"
                   placeholder="P001"
                 />
                 {errors.product_id && (
@@ -116,7 +115,7 @@ export default function AddProductPage() {
                   {...register("name", {
                     required: "Product name is required",
                   })}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-lime-500 focus:outline-none transition"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-lime-500 focus:outline-none transition text-black"
                   placeholder="Wireless Mechanical Keyboard"
                 />
                 {errors.name && (
@@ -136,7 +135,7 @@ export default function AddProductPage() {
                   {...register("category", {
                     required: "Category is required",
                   })}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-lime-500 focus:outline-none transition"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-lime-500 focus:outline-none transition text-black"
                   placeholder="Electronics"
                 />
                 {errors.category && (
@@ -158,7 +157,7 @@ export default function AddProductPage() {
                     required: "Price is required",
                     min: { value: 0, message: "Price must be positive" },
                   })}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-lime-500 focus:outline-none transition"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-lime-500 focus:outline-none transition text-black"
                   placeholder="129.99"
                 />
                 {errors.price && (
@@ -179,7 +178,7 @@ export default function AddProductPage() {
                     required: "Stock quantity is required",
                     min: { value: 0, message: "Stock must be non-negative" },
                   })}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-lime-500 focus:outline-none transition"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-lime-500 focus:outline-none transition text-black"
                   placeholder="45"
                 />
                 {errors.stock_quantity && (
@@ -194,7 +193,7 @@ export default function AddProductPage() {
                   <input
                     type="checkbox"
                     {...register("is_available")}
-                    className="w-5 h-5 text-lime-500 border-2 border-gray-300 rounded focus:ring-lime-500"
+                    className="w-5 h-5  text-lime-500 border-2 border-gray-300 rounded focus:ring-lime-500"
                   />
                   <span className="ml-3 text-sm font-semibold text-gray-700">
                     Product Available
@@ -213,7 +212,7 @@ export default function AddProductPage() {
                 {...register("image_url", {
                   required: "Image URL is required",
                 })}
-                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-lime-500 focus:outline-none transition"
+                className="w-full text-black px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-lime-500 focus:outline-none transition"
                 placeholder="https://images.unsplash.com/photo-..."
               />
               {errors.image_url && (
@@ -233,7 +232,7 @@ export default function AddProductPage() {
                   required: "Description is required",
                 })}
                 rows="4"
-                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-lime-500 focus:outline-none transition resize-none"
+                className="text-black w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-lime-500 focus:outline-none transition resize-none"
                 placeholder="Tactile precision with clicky switches and multi-device Bluetooth connectivity."
               />
               {errors.short_description && (

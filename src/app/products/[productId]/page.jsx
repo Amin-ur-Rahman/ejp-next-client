@@ -24,7 +24,7 @@ const ProductDetails = () => {
     queryKey: ["product", productId],
     queryFn: async () => {
       const res = await axios.get(
-        `http://localhost:4000/products/${productId}`
+        `https://ejp-next0server-1.onrender.com/${productId}`
       );
       return res.data;
     },
